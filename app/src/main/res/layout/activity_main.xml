@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_frame_layout_padding"
+        android:keepScreenOn="true"
+        app:boxedEdges="all">
+
+        <Button
+            android:id="@+id/count1"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:onClick="count_1"
+            android:text="button1"
+            android:textSize="5sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:onClick="count_2"
+            android:text="button2"
+            android:textSize="5sp" />
+
+        <TextView
+            android:id="@+id/touched"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world" />
+
+    </LinearLayout>
+</androidx.wear.widget.BoxInsetLayout>
