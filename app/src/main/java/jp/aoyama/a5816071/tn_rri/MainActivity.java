@@ -30,6 +30,8 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     double time=0;
     SensorManager mSensorManager;
     Date date=new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_kkmmss");
+    String filename = sdf.format(date) + ".csv";
     String dataFile=String.valueOf(date);
     @Override
 
@@ -78,23 +80,29 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         heart_rate_interval=time;
         count++;
 
-        sampleFileOutput(count, t, u);
+        sampleFileOutput(filename,count, t, u);
     }
 
     public void count_1(View view){
-        buttonView.setText("Button1 was pressed\n"+date);
+        buttonView.setText("Button1 was pressed\n");
         labelFileOutput(1);
     }
     public void count_2(View view){
-        buttonView.setText("Button2 was pressed\n"+date);
+        buttonView.setText("Button2 was pressed\n");
         labelFileOutput(2);
     }
+    public void count_3(View view){
+        buttonView.setText("Button3 was pressed\n");
+        labelFileOutput(3);
+    }
+    public void count_4(View view){
+        buttonView.setText("Button4 was pressed\n");
+        labelFileOutput(4);
+    }
 
-    private void sampleFileOutput(int count, String data, String time){
+    private void sampleFileOutput(String filename, int count, String data, String time){
         OutputStream out;
         Date date=new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_kkmmss");
-        String filename = sdf.format(date) + ".csv";
         if(count!=1) {
             try {
                 out = openFileOutput(filename, MODE_PRIVATE | MODE_APPEND);
