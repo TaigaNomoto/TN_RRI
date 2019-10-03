@@ -32,7 +32,6 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     Date date=new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_kkmmss");
     String filename = sdf.format(date) + ".csv";
-    String dataFile=String.valueOf(date);
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +102,14 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     private void sampleFileOutput(String filename, int count, String data, String time){
         OutputStream out;
         Date date=new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("kkmmss");
+        String saveDate = sdf.format(date);
         if(count!=1) {
             try {
                 out = openFileOutput(filename, MODE_PRIVATE | MODE_APPEND);
                 PrintWriter writer = new PrintWriter(new OutputStreamWriter(out, "UTF-8"));
 
-                writer.append(data + ", " + time + date +"\n");
+                writer.append(data + ", " + time +", " + saveDate +"\n");
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -119,11 +120,13 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     private void labelFileOutput(int number){
         OutputStream out;
         Date date=new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("kkmmss");
+        String saveDate = sdf.format(date);
         try {
             out = openFileOutput("label", MODE_PRIVATE | MODE_APPEND);
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(out, "UTF-8"));
 
-            writer.append(number + ", " + date +"\n");
+            writer.append(number + ", " + saveDate +"\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
